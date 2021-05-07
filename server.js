@@ -1,7 +1,7 @@
 // DEPENDENCIES
-const express = require('express');
-const path = require('path');
-const fs = require('fs');
+const express = require("express");
+const path = require("path");
+const fs = require("fs");
 
 // EXPRESS CONFIGURATION
 // This sets up the basic properties for our express server
@@ -17,23 +17,49 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, 'public/index.html'))
-})
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, 'public/notes.html'))
-})
-
-// ROUTER
-// The below points our server to a series of "route" files.
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "public/index.html"));
+});
+app.get("/notes", function (req, res) {
+  res.sendFile(path.join(__dirname, "public/notes.html"));
+});
 
-require('./routes/apiRoutes')(app);
-require('./routes/htmlRoutes')(app);
+app.get("/api/notes", (req, res) => {
+  fs.readFile(path.join(__dirname, "/db/db.json"), function (error, response) {
+    const notes = JSON.parse(response);
+    console.log(notes);
+    res.json(notes);
+  });
+});
 
-// LISTENER
-// The below code effectively "starts" our server
+app.post("/api/notes", function (req, res) {
+  fs.readFile(path.join(__dirname, "/db/db.json"), function (error, response) {
+    const notes = JSON.parse(response);
+    const noteRequest = req.body;
+    const newNoteID = notes.length + 1;
+    const newNote = {
+      id: newNoteID,
+      title: noteRequest.title,
+      text: noteRequest.text,
+    };
+    if (error) {
+      console.log(error);
+    }
+    notes.push(newNote);
+    res.json(newNote);
+    fs.writeFile(
+      path.join(__dirname, "/db/db.json"),
+      JSON.stringify(notes, null, 2),
+      function (err) {
+        if (err) throw err;
+      }
+    );
+  });
+});
 
+// // LISTENER
+// // The below code effectively "starts" our server
 app.listen(PORT, () => {
-  console.log(`App listening on PORT: ${PORT}`);
+  console.log(`app is running on ${PORT}.`);
 });
