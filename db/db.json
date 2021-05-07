@@ -2,5 +2,14 @@
     {
         "title":"Test Title",
         "text":"Test text"
+    },
+    {
+        "id": 1,
+        "title":"Clean Bathroom",
+        "text":"Monday 8am"
+    },
+    {   "id": 2,
+        "title":"Clean Kitchen",
+        "text":"Tuesday 8am"
     }
 ]
