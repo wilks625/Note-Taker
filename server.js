@@ -60,6 +60,19 @@ app.post("/api/notes", function (req, res) {
   });
 });
 
+
+// // app.delete('/api/notes/:id', (request, response) => {
+
+//   const selectedNoteID = request.params.id;
+//   console.log(`Removing item with id: ${selectedNoteID}`);
+
+//   // //remove item from notes array
+//   notes = notes.filter(notes => notes.id != selectedNoteID);
+
+//   response.end();
+// // });
+
+
 // // LISTENER
 // // The below code effectively "starts" our server
 app.listen(PORT, () => {
