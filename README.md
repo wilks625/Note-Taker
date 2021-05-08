@@ -10,7 +10,7 @@ This application allows the user create notes with a Title and Description secti
 ![Screen Shot 2021-05-08 at 12 26 25 AM](https://user-images.githubusercontent.com/76915726/117526785-60907580-af95-11eb-893a-c55730fcbec7.png)
 
 Deployed app on Heroku:  
-https://note-taker-wilks625.herokuapp.com/notes
+https://note-taker-wilks625.herokuapp.com/
 
 GIVEN a note-taking application  
 WHEN I open the Note Taker  
