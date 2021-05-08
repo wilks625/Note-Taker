@@ -5,6 +5,10 @@ Note-Taker
 ## Description
 This application allows the user create notes with a Title and Description section. The notes are saved to the left in a side bar, and are clickable, which then displays the note.
 
+![Screen Shot 2021-05-08 at 12 25 24 AM](https://user-images.githubusercontent.com/76915726/117526773-40f94d00-af95-11eb-9313-6f66a3562f51.png)
+![Screen Shot 2021-05-08 at 12 25 32 AM](https://user-images.githubusercontent.com/76915726/117526782-579fa400-af95-11eb-93e0-b2c4c53bceef.png)
+![Screen Shot 2021-05-08 at 12 26 25 AM](https://user-images.githubusercontent.com/76915726/117526785-60907580-af95-11eb-893a-c55730fcbec7.png)
+
 GIVEN a note-taking application  
 WHEN I open the Note Taker  
 THEN I am presented with a landing page with a link to a notes page  
