@@ -61,16 +61,56 @@ app.post("/api/notes", function (req, res) {
 });
 
 
-// // app.delete('/api/notes/:id', (request, response) => {
 
-//   const selectedNoteID = request.params.id;
-//   console.log(`Removing item with id: ${selectedNoteID}`);
+// // working on delete button
+app.delete("/api/notes/:id", (req, res) => {
+  const ID = parseInt(req.params.id);
+  console.log("console log id =",ID);
+  fs.readFile(path.join(__dirname, "/db/db.json"), function (error, response) {
+    if (error) {
+      console.log(error);
+    }
+    const notes = JSON.parse(response);
+    console.log("console log notes = ", notes);
 
-//   // //remove item from notes array
-//   notes = notes.filter(notes => notes.id != selectedNoteID);
+    // notes.filter((item) => {
+    //   return (item.id !== ID)
+    // })
 
-//   response.end();
-// // });
+    const newNotesArray = notes.filter((item) => {
+      return (item.id !== ID)
+    })
+    fs.writeFile(
+      path.join(__dirname, "/db/db.json"),
+      JSON.stringify(newNotesArray, null, 2),
+      function (err) {
+        if (err) throw err;
+        res.end();
+      }
+    );
+
+    // const noteRequest = req.body;
+    // const newNoteID = notes.length + 1;
+    // const newNote = {
+    //   id: newNoteID,
+    //   title: noteRequest.title,
+    //   text: noteRequest.text,
+    // };
+    // if (error) {
+    //   console.log(error);
+    // }
+    // notes.push(newNote);
+    // res.json(newNote);
+    // fs.writeFile(
+    //   path.join(__dirname, "/db/db.json"),
+    //   JSON.stringify(notes, null, 2),
+    //   function (err) {
+    //     if (err) throw err;
+    //   }
+    // );
+  });
+});
+
 
 
 // // LISTENER
