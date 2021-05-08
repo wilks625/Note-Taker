@@ -32,7 +32,7 @@ THEN I am presented with empty fields to enter a new note title and the note’s
 - [Questions](#Questions)
 
 ## Installation 
-Run the following command at the root of your project and answer the prompted questions:
+Run the following command at the root file:  
 npm i OR npm install
 
 ## Contributions
