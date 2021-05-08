@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-// These routes give our server a "map" of how to respond when users visit or request data from various URLs.
+// These routes allow the server to respond to user requests and display the corresponding files
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
 });
@@ -25,6 +25,7 @@ app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "public/notes.html"));
 });
 
+// This API route is reading db.json file parsing the data
 app.get("/api/notes", (req, res) => {
   fs.readFile(path.join(__dirname, "/db/db.json"), function (error, response) {
     const notes = JSON.parse(response);
@@ -33,6 +34,7 @@ app.get("/api/notes", (req, res) => {
   });
 });
 
+// This API route is posting data of new note to db.json file
 app.post("/api/notes", function (req, res) {
   fs.readFile(path.join(__dirname, "/db/db.json"), function (error, response) {
     const notes = JSON.parse(response);
